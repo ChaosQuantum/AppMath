@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado de la Suma de Números Primos</title>
+</head>
+<body>
+    <h1>Resultado</h1>
+    <p>La suma de los números primos menores que {{ suma_primos.n }} es {{ suma_primos.suma_primos }}</p>
+    <a href="{% url 'calcular_suma_primos' %}">Calcular otra suma</a>
+</body>
+</html>

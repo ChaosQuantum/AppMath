@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My App{% endblock %}</title>
+</head>
+<body>
+    {% include 'layout/partial/menu.html' %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado de la Simulación</title>
+</head>
+<body>
+    <h1>Resultado de la Simulación</h1>
+    <p>Tiempo Total: {{ caida.tiempo_total }} s</p>
+    <p>Velocidad Final: {{ caida.velocidad_final }} m/s</p>
+    <p>Altura Final: {{ caida.altura_final }} m</p>
+    <a href="{% url 'simular_caida_libre' %}">Hacer otra simulación</a>
+</body>
+</html>

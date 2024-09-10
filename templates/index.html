@@ -1,0 +1,11 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Welcome to your personal manager.</h1>
+    <div>
+        <a href="{% url 'calcular_caida_libre' %}">PHYSICS</a>
+        <a href="{% url 'calcular_suma_primos' %}">BASICMATH</a>
+    </div>
+{% endblock %}

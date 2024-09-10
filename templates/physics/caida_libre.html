@@ -1,0 +1,24 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+    Cálculo de Caída Libre
+{% endblock %}
+
+{% block content %}
+    <h1>Cálculo de Caída Libre</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Calcular</button>
+    </form>
+
+    {% if result %}
+        <h2>Resultados:</h2>
+        <p>Tiempo total: {{ result.time }} segundos</p>
+        <p>Altura final: {{ result.height }} metros</p>
+        <p>Velocidad final: {{ result.velocity }} m/s</p>
+
+        <a href="{% url 'calcular_caida_libre' %}">Calcular con otros valores</a>
+    {% endif %}
+{% endblock %}
