@@ -27,9 +27,9 @@ def calcular_suma_primos(request):
             suma_primos.save()
 
             # Mostramos los resultados
-            return render(request, 'basicmath/resultado_primos.html', {'suma_primos': suma_primos})
+            #return render(request, 'basicmath/resultado_primos.html', {'suma_primos': suma_primos})
 
     else:
         form = SumaPrimosForm()
 
-    return render(request, 'basicmath/suma_primos.html', {'form': form})
+    return render(request, 'basicmath/resultado_primos.html', {'form': form})

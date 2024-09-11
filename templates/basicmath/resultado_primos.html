@@ -1,12 +1,20 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Resultado de la Suma de Números Primos</title>
-</head>
-<body>
-    <h1>Resultado</h1>
-    <p>La suma de los números primos menores que {{ suma_primos.n }} es {{ suma_primos.suma_primos }}</p>
-    <a href="{% url 'calcular_suma_primos' %}">Calcular otra suma</a>
-</body>
-</html>
+{% extends 'layout/base.html' %}
+
+{% block title %}
+    Calcular Suma de Números Primos
+{% endblock %}
+
+{% block content %}
+    <h1>Calcular la Suma de Números Primos Menores que n</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Calcular</button>
+    </form>
+
+    {% if result %}
+        <h1>Resultado:</h1>
+        <p>La suma de los números primos menores que {{ suma_primos.n }} es {{ suma_primos.suma_primos }}</p>
+        <a href="{% url 'calcular_suma_primos' %}">Calcular otra suma</a>
+    {% endif %}
+{% endblock %}
