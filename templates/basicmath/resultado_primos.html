@@ -1,20 +1,23 @@
 {% extends 'layout/base.html' %}
 
 {% block title %}
-    Calcular Suma de Números Primos
+    Cálculo de Suma de Números Primos
 {% endblock %}
 
 {% block content %}
-    <h1>Calcular la Suma de Números Primos Menores que n</h1>
+    <h1>Cálculo de Suma de Números Primos</h1>
+
+    <!-- Formulario -->
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Calcular</button>
     </form>
 
+    <!-- Resultados (si existen) -->
     {% if result %}
-        <h1>Resultado:</h1>
-        <p>La suma de los números primos menores que {{ suma_primos.n }} es {{ suma_primos.suma_primos }}</p>
+        <h2>Resultados:</h2>
+        <p>La suma de los números primos menores que {{ result.n }} es {{ result.suma_primos }}.</p>
         <a href="{% url 'calcular_suma_primos' %}">Calcular otra suma</a>
     {% endif %}
 {% endblock %}

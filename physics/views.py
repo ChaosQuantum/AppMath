@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .forms import CaidaLibreForm
 
 def index(request):
-    return render(request, 'HttpResponse')
+    return render(request, 'index.html')
 
 def calcular_caida_libre(request):
     result = None

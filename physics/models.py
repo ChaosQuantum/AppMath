@@ -11,3 +11,12 @@ class CaidaLibre(models.Model):
 
     def __str__(self):
         return f"Caída desde {self.altura_inicial} m con g={self.gravedad} m/s^2"
+    
+class EnfriamientoNewton(models.Model):
+    temperatura_inicial=models.FloatField(help_text="Temperatura inicial del objeto (°C)")
+    temperatura_ambiente=models.FloatField(help_text="Temperatura ambiente (°C)")
+    k_enfriamiento=models.FloatField(help_text="Constante de enfriamiento k")
+    inter_tiempo=models.FloatField(help_text="Intervalo de tiempo dt (s)")
+
+    def __str__(self):
+        return f"Enfriamiento desde {self.temperatura_inicial}°C"
