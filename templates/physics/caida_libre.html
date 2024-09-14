@@ -19,6 +19,6 @@
         <p>Altura final: {{ result.height }} metros</p>
         <p>Velocidad final: {{ result.velocity }} m/s</p>
 
-        <a href="{% url 'calcular_caida_libre' %}">Calcular con otros valores</a>
+        <a href="{% url 'physics:calcular_caida_libre' %}">Calcular con otros valores</a>
     {% endif %}
 {% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Physics Calculations{% endblock %}
+
+{% block content %}
+    <h1>Physics Calculations</h1>
+    <p>Select a calculation:</p>
+    <div>
+        <a href="{% url 'physics:calcular_caida_libre' %}">Caída Libre</a>
+        <a href="{% url 'physics:calcular_enfriamiento_newton' %}">Enfriamiento de Newton</a>
+    </div>
+{% endblock %}

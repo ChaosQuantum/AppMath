@@ -1,0 +1,23 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+    Cálculo de Ley de Enfriamiento de Newton
+{% endblock %}
+
+{% block content %}
+    <h1>Cálculo de Ley de Enfriamiento de Newton</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Calcular</button>
+    </form>
+
+    {% if result %}
+        <h2>Resultados:</h2>
+        <p>Tiempo total: {{ result.tiempo_total }} segundos</p>
+        <p>Temperatura final: {{ result.temperatura_final }} °C</p>
+
+        <a href="{% url 'physics:calcular_enfriamiento_newton' %}">Calcular con otros valores</a>
+    {% endif %}
+{% endblock %}

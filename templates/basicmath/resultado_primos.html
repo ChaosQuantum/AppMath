@@ -18,6 +18,6 @@
     {% if result %}
         <h2>Resultados:</h2>
         <p>La suma de los números primos menores que {{ result.n }} es {{ result.suma_primos }}.</p>
-        <a href="{% url 'calcular_suma_primos' %}">Calcular otra suma</a>
+        <a href="{% url 'basicmath:calcular_suma_primos' %}">Calcular otra suma</a>
     {% endif %}
 {% endblock %}

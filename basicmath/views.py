@@ -2,8 +2,8 @@ from django.shortcuts import render
 from .forms import SumaPrimosForm
 from django.http import HttpResponse
 
-def index(request):
-    return render(request, 'index.html')  
+def basicmath_index(request):
+    return render(request, 'basicmath/basicmath_index.html') 
 
 def calcular_suma_primos(request):
     result = None 
