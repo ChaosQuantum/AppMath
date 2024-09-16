@@ -1,0 +1,19 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Secuencia de Fibonacci{% endblock %}
+
+{% block content %}
+        <h1>Calcular Secuencia de Fibonacci</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Calcular</button>
+        </form>
+
+    {% if result %}
+        <h2>Resultado de la Secuencia de Fibonacci</h2>
+        <p>Número de términos: {{ result.n }}</p>
+        <p>Secuencia: {{ result.secuencia }}</p>
+        <a href="{% url 'basicmath:calcular_secuencia_fibonacci' %}">Calcular otra secuencia</a>
+    {% endif %}
+{% endblock %}

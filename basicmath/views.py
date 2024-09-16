@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .forms import SumaPrimosForm
+from .forms import SumaPrimosForm, SecuenciaFibonacciForm
+from .models import SecuenciaFibonacci
 from django.http import HttpResponse
 
 def basicmath_index(request):
@@ -33,3 +34,23 @@ def calcular_suma_primos(request):
         form = SumaPrimosForm()
 
     return render(request, 'basicmath/resultado_primos.html', {'form': form, 'result': result})
+
+def calcular_secuencia_fibonacci(request):
+    if request.method == 'POST':
+        form = SecuenciaFibonacciForm(request.POST)
+        if form.is_valid():
+            n = form.cleaned_data['n']
+            a, b = 0, 1
+            secuencia = []
+            for _ in range(n):
+                secuencia.append(a)
+                a, b = b, a + b
+            
+            resultado = SecuenciaFibonacci(n=n, secuencia=secuencia)
+            resultado.save()
+            
+            return render(request, 'basicmath/fibonacci_resultado.html', {'form': form, 'result': resultado})
+    else:
+        form = SecuenciaFibonacciForm()
+    
+    return render(request, 'basicmath/fibonacci_resultado.html', {'form': form})
