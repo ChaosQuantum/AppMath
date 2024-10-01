@@ -1,6 +1,7 @@
 from django.shortcuts import render
+import numpy as np
 from django.http import HttpResponse
-from .forms import CaidaLibreForm, EnfriamientoNewtonForm
+from .forms import CaidaLibreForm, EnfriamientoNewtonForm, CircuitoRCForm
 
 def physics_index(request):
     return render(request, 'physics/physics_index.html')
@@ -60,3 +61,36 @@ def calcular_enfriamiento_newton(request):
         form = EnfriamientoNewtonForm()
 
     return render(request, 'physics/enfriamiento_newton.html', {'form': form, 'result': result})
+
+def calcular_circuito_rc(request):
+    tiempos = []
+    voltajes = []
+    result = None
+    
+    if request.method == 'POST':
+        form = CircuitoRCForm(request.POST)
+        if form.is_valid():
+            R = form.cleaned_data['R']
+            C = form.cleaned_data['C']
+            V_0 = form.cleaned_data['V_0']
+            t_final = form.cleaned_data['t_final']
+            dt = form.cleaned_data['dt']
+
+            # Cálculo de voltajes en el condensador
+            t = 0
+            while t < t_final:
+                Vc = V_0 * (1 - np.exp(-t / (R * C)))
+                tiempos.append(t)
+                voltajes.append(Vc)
+                t += dt
+
+            result = {
+                'tiempos': tiempos,
+                'voltajes': voltajes,
+            }
+
+    else:
+        form = CircuitoRCForm()
+
+    return render(request, 'circuito_rc.html', {'form': form, 'result': result,
+    })

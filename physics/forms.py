@@ -1,5 +1,5 @@
 from django import forms
-from .models import CaidaLibre, EnfriamientoNewton
+from .models import CaidaLibre, EnfriamientoNewton, CircuitoRC
 
 class CaidaLibreForm(forms.ModelForm):
     class Meta:
@@ -76,3 +76,16 @@ class EnfriamientoNewtonForm(forms.ModelForm):
         if inter_tiempo <= 0:
             raise forms.ValidationError('El intervalo de tiempo debe de ser un valor positivo')
         return inter_tiempo
+    
+
+class CircuitoRCForm(forms.ModelForm):
+    class Meta:
+        model = CircuitoRC
+        fields = ['R', 'C', 'V_0', 't_final', 'dt']
+        widgets = {
+            'R': forms.NumberInput(attrs={'class': 'form-control'}),
+            'C': forms.NumberInput(attrs={'class': 'form-control'}),
+            'V_0': forms.NumberInput(attrs={'class': 'form-control'}),
+            't_final': forms.NumberInput(attrs={'class': 'form-control'}),
+            'dt': forms.NumberInput(attrs={'class': 'form-control'}),
+        }

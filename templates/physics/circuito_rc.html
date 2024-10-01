@@ -1,0 +1,37 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+    Cálculo de Circuito RC
+{% endblock %}
+
+{% block content %}
+    <h1>Cálculo de Circuito RC</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Calcular</button>
+    </form>
+
+    {% if result %}
+        <h2>Resultados:</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tiempo (s)</th>
+                    <th>Voltaje en el condensador (V)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t, Vc in result.tiempos|zip:result.voltajes %}
+                <tr>
+                    <td>{{ t:.2f }}</td>
+                    <td>{{ Vc:.2f }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{% url 'calcular_circuito_rc' %}">Calcular con otros valores</a>
+    {% endif %}
+{% endblock %}

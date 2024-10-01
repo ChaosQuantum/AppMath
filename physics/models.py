@@ -20,3 +20,13 @@ class EnfriamientoNewton(models.Model):
 
     def __str__(self):
         return f"Enfriamiento desde {self.temperatura_inicial}°C"
+    
+class CircuitoRC(models.Model):
+    R = models.FloatField(help_text="Resistencia (ohmios)")
+    C = models.FloatField(help_text="Capacitancia (faradios)")
+    V_0 = models.FloatField(help_text="Voltaje de la fuente (voltios)")
+    t_final = models.FloatField(help_text="Tiempo final (segundos)")
+    dt = models.FloatField(help_text="Intervalo de tiempo (segundos)")
+
+    def __str__(self):
+        return f"Circuito RC: R={self.R}, C={self.C}, V0={self.V_0}"

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import numpy as np
 from .forms import SumaPrimosForm, SecuenciaFibonacciForm
 from .models import SecuenciaFibonacci
 from django.http import HttpResponse

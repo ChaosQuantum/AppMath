@@ -82,6 +82,7 @@ main {
     align-items: center;
 }
 
+
 /* Ajustes para pantallas más pequeñas */
 @media (max-width: 768px) {
     nav ul {
